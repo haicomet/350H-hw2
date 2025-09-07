@@ -175,6 +175,73 @@ do
                         }
                     } while (validEntry == false);
 
+                    // get the pet's age. can be ? at initial entry.
+                    do
+                    {
+                        int petAge;
+                        Console.WriteLine("Enter the pet's age or enter ? if unknown");
+                        readResult = Console.ReadLine();
+
+                        if (readResult != null)
+                        {
+                            animalAge = readResult;
+                            if (animalAge != "?")
+                            {
+                                validEntry = int.TryParse(animalAge, out petAge);
+                            }
+                            else
+                            {
+                                validEntry = true;
+                            }
+                        }
+                    } while (validEntry == false);
+
+                    // get a description of the pet's physical appearance/condition - animalPhysicalDescription can be blank.
+                    do
+                    {
+                        Console.WriteLine("Enter a physical description of the pet (size, color, gender, weight, housebroken)");
+                        readResult = Console.ReadLine();
+
+                        if (readResult != null)
+                        {
+                            animalPhysicalDescription = readResult.ToLower();
+                            if (animalPhysicalDescription == "")
+                            {
+                                animalPhysicalDescription = "tbd";
+                            }
+                        }
+                    } while (animalPhysicalDescription == "");
+
+                    // get a description of the pet's personality - animalPersonalityDescription can be blank.
+                    do
+                    {
+                        Console.WriteLine("Enter a description of the pet's personality (likes or dislikes, tricks, energy level)");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            animalPersonalityDescription = readResult.ToLower();
+                            if (animalPersonalityDescription == "")
+                            {
+                                animalPersonalityDescription = "tbd";
+                            }
+                        }
+                    } while (animalPersonalityDescription == "");
+
+                    // get the pet's nickname. animalNickname can be blank.
+                    do
+                    {
+                        Console.WriteLine("Enter a nickname for the pet");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            animalNickname = readResult.ToLower();
+                            if (animalNickname == "")
+                            {
+                                animalNickname = "tbd";
+                            }
+                        }
+                    } while (animalNickname == "");
+
                     // increment petCount (the array is zero-based, so we increment the counter after adding to the array)
                     petCount = petCount + 1;
                     // check maxPet limit
