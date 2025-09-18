@@ -12,6 +12,14 @@ string[] pettingZoo =
 Console.WriteLine("School A");
 // PrintGroup(group);
 
+void PlanSchoolVisit(string schoolName, int groups = 6) 
+{
+    RandomizeAnimals(); 
+    string[,] group = AssignGroup(groups);
+    Console.WriteLine(schoolName);
+    PrintGroup(group);
+}
+
 void RandomizeAnimals() 
 {
     Random random = new Random();
