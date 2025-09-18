@@ -7,11 +7,6 @@ string[] pettingZoo =
     "ostriches", "pigs", "ponies", "rabbits", "sheep", "tortoises",
 };
 
-// RandomizeAnimals();
-// string[,] group = AssignGroup();
-Console.WriteLine("School A");
-// PrintGroup(group);
-
 PlanSchoolVisit("School A");
 PlanSchoolVisit("School B", 3);
 PlanSchoolVisit("School C", 2);
