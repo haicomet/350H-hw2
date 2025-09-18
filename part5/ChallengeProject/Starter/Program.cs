@@ -74,7 +74,7 @@ void FreezePlayer()
 }
 
 // Reads directional input from the Console and moves the player
-void Move()
+void Move(bool isNonDirectional = false)
 {
     int lastX = playerX;
     int lastY = playerY;
@@ -95,6 +95,15 @@ void Move()
             break;
         case ConsoleKey.Escape:
             shouldExit = true;
+            break;
+        default:
+            if (isNonDirectional)
+            {
+                shouldExit = true;
+                Console.Clear();
+                Console.WriteLine("Non-directional key pressed. Program exiting.");
+                return;
+            }
             break;
     }
 
