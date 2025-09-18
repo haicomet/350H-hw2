@@ -121,13 +121,23 @@ void Move(bool isNonDirectional = false)
     // Draw the player at the new location
     Console.SetCursorPosition(playerX, playerY);
     Console.Write(player);
-}
 
-// Clears the console, displays the food and player
-void InitializeGame()
-{
-    Console.Clear();
-    ShowFood();
-    Console.SetCursorPosition(0, 0);
-    Console.Write(player);
+    if (PlayerAteFood())
+    {
+        ChangePlayer();
+        ShowFood();
+    }
 }
+    // Clears the console, displays the food and player
+    void InitializeGame()
+    {
+        Console.Clear();
+        ShowFood();
+        Console.SetCursorPosition(0, 0);
+        Console.Write(player);
+    }
+
+    bool PlayerAteFood()
+    {
+        return playerX == foodX && playerY == foodY;
+    }
