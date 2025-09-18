@@ -74,8 +74,20 @@ void FreezePlayer()
 }
 
 // Reads directional input from the Console and moves the player
-void Move(bool isNonDirectional = false)
+void Move(bool isNonDirectional = false, int speed = 1)
 {
+    if (IsFrozen())
+    {
+        FreezePlayer(); 
+        return; 
+    }
+
+    
+    if (IsFast())
+    {
+        speed = 3;
+    }
+
     int lastX = playerX;
     int lastY = playerY;
 
@@ -88,10 +100,10 @@ void Move(bool isNonDirectional = false)
             playerY++;
             break;
         case ConsoleKey.LeftArrow:
-            playerX--;
+            playerX -= speed;
             break;
         case ConsoleKey.RightArrow:
-            playerX++;
+            playerX += speed;
             break;
         case ConsoleKey.Escape:
             shouldExit = true;
@@ -128,16 +140,27 @@ void Move(bool isNonDirectional = false)
         ShowFood();
     }
 }
-    // Clears the console, displays the food and player
-    void InitializeGame()
-    {
-        Console.Clear();
-        ShowFood();
-        Console.SetCursorPosition(0, 0);
-        Console.Write(player);
-    }
+// Clears the console, displays the food and player
+void InitializeGame()
+{
+    Console.Clear();
+    ShowFood();
+    Console.SetCursorPosition(0, 0);
+    Console.Write(player);
+}
 
-    bool PlayerAteFood()
-    {
-        return playerX == foodX && playerY == foodY;
-    }
+bool PlayerAteFood()
+{
+    return playerX == foodX && playerY == foodY;
+}
+
+bool IsFrozen()
+{
+    return player == states[2]; // "(X_X)"
+}
+
+
+bool IsFast()
+{
+    return player == states[1]; // "(^-^)"
+}
